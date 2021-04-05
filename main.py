@@ -18,7 +18,7 @@ from grad import LookUpGrad
 torch.manual_seed(0)
 torch.set_deterministic(True)
 
-parser = argparse.ArgumentParser(description='MCPARK Gradient Optimization')
+parser = argparse.ArgumentParser(description='MCPARK Gradient Pruning Skeleton')
 parser.add_argument('--arch', type=str, default='LeNet_5', metavar='string')
 parser.add_argument('--dataset', type=str, default='MNIST', metavar='string')
 parser.add_argument('--epochs', type=int, default=2, metavar='int')
@@ -33,7 +33,7 @@ trainset = datasets.MNIST('../data', train=True, download=True, transform=transf
                           transforms.Normalize((0.1307,), (0.3801))
                           ]))
 
-data_classes = [i for i in range(10)]
+data_classes = [i for i in range(10)] # MNIST
 locals()['train_subset_per_class_{}'.format(args.idx)] = list()
 for j in range(len(trainset)):
     if int(trainset[j][1]) == args.idx:
